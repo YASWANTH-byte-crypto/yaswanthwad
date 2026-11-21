@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaisaPilot - Student Financial Management</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">◆ Paisa<span>Pilot</span></div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#finance">Dashboard</a></li>
+    </ul>
+    <a class="nav-btn" href="#finance">Get Started →</a>
+</nav>
+
+<div class="hero" id="home">
+    <div>
+        <div class="small-title">SMART MONEY. SMART FUTURE.</div>
+        <h1>Your Money.<br>Your Goals.<br><span>Your Future.</span></h1>
+        <p>Take control of your student finances. Track expenses, manage your monthly allowance, and build smart saving habits with PaisaPilot.</p>
+
+        <div class="hero-buttons">
+            <a href="#finance" class="primary-btn">Explore Dashboard →</a>
+            <a href="#services" class="secondary-btn">Discover Features</a>
+        </div>
+
+        <div class="trust">
+            <span>✓ Easy Tracking</span>
+            <span>✓ Smart Budgeting</span>
+            <span>✓ Student Friendly</span>
+        </div>
+    </div>
+
+    <div class="dashboard-preview">
+        <div class="preview-top">
+            <div>
+                <small>Student Portfolio Balance</small>
+                <h2 id="heroBalance">₹5,000</h2>
+                <div class="growth">↑ Your financial journey starts here</div>
+            </div>
+            <span>● Live Preview</span>
+        </div>
+
+        <div class="preview-chart">
+            <canvas id="heroChart"></canvas>
+        </div>
+
+        <div class="mini-cards">
+            <div class="mini-card">Income<strong id="heroIncome">₹0</strong></div>
+            <div class="mini-card">Expenses<strong id="heroExpense">₹0</strong></div>
+            <div class="mini-card">Savings<strong id="heroSavings">₹5,000</strong></div>
+        </div>
+    </div>
+</div>
+
+<section id="services">
+    <div class="section-heading">
+        <small>OUR FEATURES</small>
+        <h2>Financial Guidance for Students</h2>
+        <p>Everything you need to manage your money in one place.</p>
+    </div>
+
+    <div class="services">
+        <div class="service-card">
+            <div class="emoji">💰</div>
+            <h3>Income Tracking</h3>
+            <p>Record your monthly allowance, part-time income and other earnings.</p>
+            <a href="#finance">Explore →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="emoji">📊</div>
+            <h3>Expense Analysis</h3>
+            <p>Understand where your money goes with simple financial summaries.</p>
+            <a href="#finance">Explore →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="emoji">🎯</div>
+            <h3>Budget Planning</h3>
+            <p>Set spending limits and make better decisions with your money.</p>
+            <a href="#finance">Explore →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="emoji">🌱</div>
+            <h3>Savings Growth</h3>
+            <p>Develop responsible money habits and work towards your savings goals.</p>
+            <a href="#finance">Explore →</a>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="about">
+        <div class="about-main">
+            <div class="small-title">MORE THAN MONEY MANAGEMENT</div>
+            <h2>A Partner in Your Financial Journey.</h2>
+            <p>We believe every student deserves the ability to understand and manage their finances. Start small, spend wisely and plan for tomorrow.</p>
+            <a href="#finance" class="primary-btn about-btn">Start Managing Money →</a>
+        </div>
+
+        <div class="quote">
+            <h2>“</h2>
+            <p>Financial freedom starts with small decisions. Every rupee you manage today can help build a better tomorrow.</p>
+            <strong>— PaisaPilot Team</strong>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="stats">
+        <div class="stat"><h2>100%</h2><p>Expense Visibility</p></div>
+        <div class="stat"><h2>24/7</h2><p>Personal Tracking</p></div>
+        <div class="stat"><h2>7+</h2><p>Expense Categories</p></div>
+        <div class="stat"><h2>Smart</h2><p>Budget Planning</p></div>
+    </div>
+</section>
+
+<section class="finance-section" id="finance">
+    <div class="section-heading">
+        <small>YOUR PERSONAL FINANCE SPACE</small>
+        <h2>Manage Your Money</h2>
+        <p>Enter your transactions and monitor your financial activity.</p>
+    </div>
+
+    <div class="finance-grid">
+        <div class="panel">
+            <h3>➕ Add New Transaction</h3>
+
+            <input type="text" id="merchant" placeholder="Description / Merchant">
+            <input type="number" id="amount" placeholder="Amount in ₹">
+
+            <select id="type">
+                <option value="Expense">Expense</option>
+                <option value="Income">Income</option>
+            </select>
+
+            <select id="category">
+                <option>Food</option>
+                <option>Books</option>
+                <option>Rent</option>
+                <option>Entertainment</option>
+                <option>Utilities</option>
+                <option>Transport</option>
+                <option>Other</option>
+            </select>
+
+            <select id="payment">
+                <option>UPI</option>
+                <option>Cash</option>
+                <option>Card</option>
+                <option>Bank Transfer</option>
+            </select>
+
+            <input type="date" id="date">
+
+            <button class="full-btn" onclick="addTransaction()">Add Transaction +</button>
+        </div>
+
+        <div class="panel">
+            <h3>📈 Financial Overview</h3>
+
+            <div class="summary">
+                <div><p>Monthly Allowance</p><h2 id="allowanceDisplay">₹5,000</h2></div>
+                <div><p>Total Income</p><h2 id="income">₹0</h2></div>
+                <div><p>Total Expenses</p><h2 id="expenses">₹0</h2></div>
+                <div><p>Available Balance</p><h2 id="balance">₹5,000</h2></div>
+            </div>
+
+            <h3>Expense Breakdown</h3>
+            <canvas id="expenseChart"></canvas>
+        </div>
+    </div>
+
+    <div class="panel transaction-panel">
+        <h3>📋 Recent Transactions</h3>
+
+        <div class="search-filter">
+            <input id="search" placeholder="Search transactions..." oninput="render()">
+            <select id="filter" onchange="render()">
+                <option value="All">All Transactions</option>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Payment</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionList"></tbody>
+            </table>
+        </div>
+
+        <button class="full-btn" onclick="exportCSV()">Download Transaction Report ↓</button>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <div class="logo">◆ Paisa<span>Pilot</span></div>
+            <p>WalletWise Warriors</p>
+            <p>Smart Spending Today, Better Future Tomorrow.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <p><a href="#home">Home</a></p>
+            <p><a href="#services">Features</a></p>
+            <p><a href="#about">About</a></p>
+            <p><a href="#finance">Dashboard</a></p>
+        </div>
+
+        <div>
+            <h3>Our Mission</h3>
+            <p>Helping students understand their money.</p>
+            <p>Encouraging smarter spending habits.</p>
+        </div>
+    </div>
+
+    <hr>
+    <p class="copyright">© 2026 PaisaPilot | WalletWise Warriors. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
